@@ -1,0 +1,9 @@
+Z:\Demos\WebAPIInAspNetCore\bin\Debug\netcoreapp1.1\WebAPIInAspNetCore.deps.json
+Z:\Demos\WebAPIInAspNetCore\bin\Debug\netcoreapp1.1\WebAPIInAspNetCore.runtimeconfig.json
+Z:\Demos\WebAPIInAspNetCore\bin\Debug\netcoreapp1.1\WebAPIInAspNetCore.runtimeconfig.dev.json
+Z:\Demos\WebAPIInAspNetCore\bin\Debug\netcoreapp1.1\WebAPIInAspNetCore.dll
+Z:\Demos\WebAPIInAspNetCore\bin\Debug\netcoreapp1.1\WebAPIInAspNetCore.pdb
+Z:\Demos\WebAPIInAspNetCore\obj\Debug\netcoreapp1.1\WebAPIInAspNetCore.csprojResolveAssemblyReference.cache
+Z:\Demos\WebAPIInAspNetCore\obj\Debug\netcoreapp1.1\WebAPIInAspNetCore.AssemblyInfo.cs
+Z:\Demos\WebAPIInAspNetCore\obj\Debug\netcoreapp1.1\WebAPIInAspNetCore.dll
+Z:\Demos\WebAPIInAspNetCore\obj\Debug\netcoreapp1.1\WebAPIInAspNetCore.pdb

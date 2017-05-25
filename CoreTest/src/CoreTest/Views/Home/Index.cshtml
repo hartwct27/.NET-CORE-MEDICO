@@ -1,0 +1,156 @@
+﻿<html>
+<head>
+    <title>Employee Manager</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            var options = {};
+            options.url = "/api/employee";
+            options.type = "GET";
+            options.dataType = "json";
+            options.success = function (data) {
+                data.forEach(function (element) {
+                    $("#employeeid").append("<option>"
+                        + element.employeeID + "</option>");
+                });
+            };
+            options.error = function () {
+                $("#msg").html("Error while calling the Web API!");
+            };
+            $.ajax(options);
+
+
+
+            $("#employeeid").change(function () {
+                var options = {};
+                options.url = "/api/employee/" +
+                    $("#employeeid").val();
+                options.type = "GET";
+                options.dataType = "json";
+                options.success = function (data) {
+                    $("#firstname").val(data.firstName);
+                    $("#lastname").val(data.lastName);
+                    $("#city").val(data.city);
+                };
+                options.error = function () {
+                    $("#msg").html("Error while calling the Web API!");
+                };
+                $.ajax(options);
+            });
+
+
+
+            $("#insert").click(function () {
+                var options = {};
+                options.url = "/api/employee";
+                options.type = "POST";
+
+                var obj = {};
+                obj.firstName = $("#firstname").val();
+                obj.lastName = $("#lastname").val();
+                obj.city = $("#city").val();
+
+                options.data = JSON.stringify(obj);
+                options.contentType = "application/json";
+                options.dataType = "html";
+
+                options.success = function (msg) {
+                    $("#msg").html(msg);
+                };
+                options.error = function () {
+                    $("#msg").html("Error while calling the Web API!");
+                };
+                $.ajax(options);
+            });
+
+
+
+            $("#update").click(function () {
+                var options = {};
+                options.url = "/api/employee/"
+                    + $("#employeeid").val();
+                options.type = "PUT";
+
+                var obj = {};
+                obj.employeeID = $("#employeeid").val();
+                obj.firstName = $("#firstname").val();
+                obj.lastName = $("#lastname").val();
+                obj.city = $("#city").val();
+
+                options.data = JSON.stringify(obj);
+                options.contentType = "application/json";
+                options.dataType = "html";
+                options.success = function (msg) {
+                    $("#msg").html(msg);
+                };
+                options.error = function () {
+                    $("#msg").html("Error while calling the Web API!");
+                };
+                $.ajax(options);
+            });
+
+
+
+
+            $("#delete").click(function () {
+                var options = {};
+                options.url = "/api/employee/"
+                    + $("#employeeid").val();
+                options.type = "DELETE";
+                options.dataType = "html";
+                options.success = function (msg) {
+                    $("#msg").html(msg);
+                };
+                options.error = function () {
+                    $("#msg").html("Error while calling the Web API!");
+                };
+                $.ajax(options);
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <h1>Employee Manager</h1>
+    <form>
+        <table border="1" cellpadding="10">
+            <tr>
+                <td>Employee ID :</td>
+                <td>
+                    <select id="employeeid"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>First Name :</td>
+                <td><input id="firstname" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Last Name :</td>
+                <td><input id="lastname" type="text" /></td>
+            </tr>
+            <tr>
+                <td>City :</td>
+                <td><input id="city" type="text" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" id="insert"
+                            value="Insert" />
+                    <input type="button" id="update"
+                            value="Update" />
+                    <input type="button" id="delete"
+                            value="Delete" />
+                </td>
+            </tr>
+        </table>
+        <br />
+        <div id="msg"></div>
+    </form>
+</body>
+</html>
